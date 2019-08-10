@@ -5,4 +5,6 @@ import com.mxp.erp.entity.UserEntity;
 
 public interface IUserService extends IBaseService<UserEntity> {
 
+	UserEntity getUserByUserName(String name);
+	
 }

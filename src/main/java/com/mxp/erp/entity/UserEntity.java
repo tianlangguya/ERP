@@ -76,4 +76,11 @@ public class UserEntity extends BaseEntity {
 		this.age = age;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.user_name + "|" + this.password + "|" + this.telephone + "|" + this.email + "|" + this.login_count
+				+ "|" + this.login_status + "|" + this.age + "|";
+	}
+
 }

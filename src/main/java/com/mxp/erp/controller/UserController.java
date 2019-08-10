@@ -20,15 +20,33 @@ public class UserController {
 
 	@RequestMapping(value = "/getById", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public void getById(@RequestBody long id) {
+	public String getById(@RequestBody long id) {
 		UserEntity user = userService.getById(id);
 		if (user != null) {
-			System.out.println(id);
+			return user.toString();
+		}
+		return "该用户不存在";
+	}
+	
+	@RequestMapping(value = "/getByName", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String getByName(@RequestBody String name,@RequestBody String password) {
+		UserEntity user = userService.getUserByUserName(name);
+		if(user==null)
+		{
+			return "用户不存在！";
+		}else {
+			if(user.getPassword().equals(password))
+			{
+				return "登陆成功！";
+			}else {
+				return "登陆失败！";
+			}
 		}
 	}
 
-	@RequestMapping(value = "/index")
-	public String goIndex() {
-		return "html/index";
-	}
+//	@RequestMapping(value = "/index")
+//	public String goIndex( ) {
+//		return "html/index";
+//	}
 }

@@ -12,5 +12,6 @@ public interface UserDao extends BaseDao<UserEntity> {
 
 	@Override
 	UserEntity getById(long id);
-
+	
+	UserEntity getUserByUserName(String name);
 }

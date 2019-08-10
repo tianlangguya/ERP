@@ -14,4 +14,8 @@
     <select id="getById" resultType="com.mxp.erp.entity.UserEntity">
         select * from sys_user where id = #{id}
     </select>
+    
+    <select id="getUserByUserName" resultType="com.mxp.erp.entity.UserEntity">
+     select * from sys_user where user_name = #{name}
+    </select>
 </mapper>
