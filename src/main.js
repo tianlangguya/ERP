@@ -4,7 +4,11 @@ import Vue from 'vue'
 import App from './App'
 // import Login from './components/Login'
 import router from './router'
+import ElementUI from 'element-ui'
+import axios from 'axios'
 
+Vue.use(ElementUI)
+Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
