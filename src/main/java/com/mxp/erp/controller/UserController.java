@@ -27,26 +27,27 @@ public class UserController {
 		}
 		return "该用户不存在";
 	}
-	
+
 	@RequestMapping(value = "/getByName", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String getByName(@RequestBody String name,@RequestBody String password) {
+	public String getByName(@RequestBody String name, @RequestBody String password) {
 		UserEntity user = userService.getUserByUserName(name);
-		if(user==null)
-		{
+		if (user == null) {
 			return "用户不存在！";
-		}else {
-			if(user.getPassword().equals(password))
-			{
+		} else {
+			if (user.getPassword().equals(password)) {
+
+				// BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+				// String enPassword = encoder.encode(password);加密
 				return "登陆成功！";
-			}else {
+			} else {
 				return "登陆失败！";
 			}
 		}
 	}
 
-//	@RequestMapping(value = "/index")
-//	public String goIndex( ) {
-//		return "html/index";
-//	}
+	// @RequestMapping(value = "/index")
+	// public String goIndex( ) {
+	// return "html/index";
+	// }
 }
