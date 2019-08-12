@@ -3,12 +3,20 @@
     <el-container>
         <h2>{{message}}</h2>
         <el-form class="demo-form-inline">
-        <el-form-item label="用户名">
-            <el-input v-model="form.name"></el-input>
-        </el-form-item>
-        <el-form-item label="密码">
-            <el-input v-model="form.password"></el-input>
-        </el-form-item>
+        <el-row>
+            <el-col :span="24">
+                    <el-form-item label="用户名">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="30">
+                    <el-form-item label="密码">
+                        <el-input v-model="form.password"></el-input>
+                    </el-form-item>
+            </el-col>
+        </el-row>
         <el-row>
             <el-button type="primary" @click="onSubmit">登录</el-button>
             <el-button type="primary">注册</el-button>
@@ -44,6 +52,13 @@ export default {
 </script>
 
 <style>
-
+.el-form-item{
+    display:flex;
+    justify-content:center;
+    margin-bottom: 15px;
+}
+.el-col-30{
+    margin-left: 13px;
+}
 
 </style>
