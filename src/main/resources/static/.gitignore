@@ -40,8 +40,4 @@ selenium-debug.log
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-<<<<<<< HEAD
 >>>>>>> 858f7f209138abceebf80aef39f69f8be85cca47
-=======
-/target/
->>>>>>> 2a7947794166d9f330b2f8e5ab3fee6333180303

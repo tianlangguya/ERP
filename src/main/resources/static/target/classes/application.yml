@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/erp
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: erp
+  mvc: 
+    view: 
+      prefix: /
+      suffix: .html
+liquibase:
+  change-log: classpath:liquibase/master.xml
+  enabled: true
+  drop-first: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.mxp.erp.entity
+  
+#security:
+#  user:
+#    name: admin 
+#    password: 123456
+#    
+#management: 
+#  security:
+#    enabled: false 
+#    role: ADMIN
+
+server: 
+  port: 8888
+  context-path: /erp
+logging:
+  level:
+    com:
+      mxp:
+         erp:
+            dao: debug
+
+         

@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+	<changeSet id="CREATE_SYS_USER" author="mxp">
+		<validCheckSum>any</validCheckSum>
+		<createTable tableName="SYS_USER">
+			<column name="ID" type="bigint">
+				<constraints primaryKey="true"
+					primaryKeyName="PK_SYS_USER" />
+			</column>
+			<column name="CREATION_TIME" type="datetime2" />
+			<column name="DESCRIPTION" type="varchar(2000)" />
+			<column name="LAST_MODIFY_TIME" type="datetime2" />
+			<column name="USER_NAME" type="varchar(255)" />
+			<column name="PASSWORD" type="varchar(255)" />
+			<column name="TELEPHONE" type="varchar(255)" />
+			<column name="EMAIL" type="varchar(255)" />
+			<column name="LOGIN_COUNT" type="bigint" />
+			<column name="LOGIN_STATUS" type="varchar(128)" />
+			<column name="AGE" type="bigint" />
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
