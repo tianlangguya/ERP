@@ -10,14 +10,17 @@ import com.mxp.erp.entity.UserEntity;
 
 @Service("userService")
 public class UserService extends BaseService<UserEntity> implements IUserService {
-	
+
 	@Autowired
 	UserDao userDao;
-	
+
 	@Override
-	public UserEntity getUserByUserName(String name) {
-		// TODO Auto-generated method stub
+	public UserEntity getByName(String name) {
 		return userDao.getUserByUserName(name);
 	}
 
+	@Override
+	public void update(UserEntity entity) {
+		userDao.update(entity);
+	}
 }

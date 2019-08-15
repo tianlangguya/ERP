@@ -1,8 +1,8 @@
 package com.mxp.erp.api;
 
-import com.mxp.erp.dto.User;
+import com.mxp.erp.entity.UserEntity;
 
 public interface ITokenService {
 
-	String getToken(User user);
+	String getToken(UserEntity user);
 }

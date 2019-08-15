@@ -12,7 +12,7 @@ import com.mxp.erp.api.IUserService;
 import com.mxp.erp.entity.UserEntity;
 
 @Controller
-@RequestMapping(value = "/rest/user")
+@RequestMapping(value = "/user")
 public class UserController {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class UserController {
 	@RequestMapping(value = "/getByName", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String getByName(@RequestBody String name, @RequestBody String password) {
-		UserEntity user = userService.getUserByUserName(name);
+		UserEntity user = userService.getByName(name);
 		if (user == null) {
 			return "用户不存在！";
 		} else {
@@ -45,9 +45,7 @@ public class UserController {
 			}
 		}
 	}
+	
+	
 
-	// @RequestMapping(value = "/index")
-	// public String goIndex( ) {
-	// return "html/index";
-	// }
 }

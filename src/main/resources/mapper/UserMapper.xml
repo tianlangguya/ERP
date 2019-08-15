@@ -4,18 +4,40 @@
 
 <mapper namespace="com.mxp.erp.dao.UserDao">
 
-   <resultMap id="BaseResultMap" type="com.mxp.erp.entity.UserEntity">
-        <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="userName" jdbcType="VARCHAR" property="userName" />
-        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
-        <result column="realName" jdbcType="VARCHAR" property="realName" />
-    </resultMap>
- 
-    <select id="getById" resultType="com.mxp.erp.entity.UserEntity">
-        select * from sys_user where id = #{id}
-    </select>
-    
-    <select id="getUserByUserName" resultType="com.mxp.erp.entity.UserEntity">
-     select * from sys_user where user_name = #{name}
-    </select>
+	<resultMap id="BaseResultMap"
+		type="com.mxp.erp.entity.UserEntity">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="userName" jdbcType="VARCHAR"
+			property="userName" />
+		<result column="passWord" jdbcType="VARCHAR"
+			property="passWord" />
+		<result column="realName" jdbcType="VARCHAR"
+			property="realName" />
+	</resultMap>
+
+	<select id="getById" resultType="com.mxp.erp.entity.UserEntity">
+		select * from sys_user where id
+		= #{id}
+	</select>
+
+	<select id="getUserByUserName"
+		resultType="com.mxp.erp.entity.UserEntity">
+		select * from sys_user where user_name = #{name}
+	</select>
+
+	<update id="update"
+		parameterType="com.mxp.erp.entity.UserEntity">
+		update sys_user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="user_name!=null">user_name=#{user_name},</if>
+			<if test="password!=null">password=#{password},</if>
+			<if test="telephone!=null">telephone=#{telephone},</if>
+			<if test="email!=null">email=#{email},</if>
+			<if test="login_count!=null">login_count=#{login_count},</if>
+			<if test="login_status!=null">login_status=#{login_status},</if>
+			<if test="age!=null">age=#{age},</if>
+			<if test="last_modify_time!=null">last_modify_time=#{last_modify_time},</if>
+		</trim>
+		WHERE id=#{id}
+	</update>
 </mapper>
