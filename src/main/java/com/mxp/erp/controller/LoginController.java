@@ -3,7 +3,6 @@ package com.mxp.erp.controller;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +53,8 @@ public class LoginController {
 			return restResponse;
 		}
 
-		user.setLogin_status(LoginStatus.LOGIN.getName());
-		user.setLast_modify_time(new Date());
+		user.setLoginStatus(LoginStatus.LOGIN.getName());
+		user.setLastModifyTime(new Date());
 		userService.update(user);
 		String token = tokenService.getToken(user);
 		Cookie cookie = new Cookie("token", token);
@@ -93,7 +92,7 @@ public class LoginController {
 			return restResponse;
 		}
 		user.setPassword(param.getNewPassword());
-		user.setLast_modify_time(new Date());
+		user.setLastModifyTime(new Date());
 		userService.update(user);
 		String token = tokenService.getToken(user);
 		Cookie cookie = new Cookie("token", token);
@@ -104,7 +103,7 @@ public class LoginController {
 
 	@UserLoginToken
 	@RequestMapping("/logout")
-	public Object logout(@RequestBody UserParam param) {
+	public RestResponse<JSONObject> logout(@RequestBody UserParam param) {
 		RestResponse<JSONObject> restResponse = new RestResponse<>();
 		restResponse.setCode(RestResponseCode.OK);
 		restResponse.setSuccess(true);
@@ -116,10 +115,10 @@ public class LoginController {
 			restResponse.setMessage("用户名不存在");
 			return restResponse;
 		}
-		user.setLast_modify_time(new Date());
-		user.setLogin_status(LoginStatus.LOGOUT.getName());
+		user.setLastModifyTime(new Date());
+		user.setLoginStatus(LoginStatus.LOGOUT.getName());
 		userService.update(user);
-		return null;
+		return restResponse;
 	}
 
 }

@@ -29,14 +29,14 @@
 		parameterType="com.mxp.erp.entity.UserEntity">
 		update sys_user
 		<trim prefix="set" suffixOverrides=",">
-			<if test="user_name!=null">user_name=#{user_name},</if>
+			<if test="userName!=null">user_name=#{userName},</if>
 			<if test="password!=null">password=#{password},</if>
 			<if test="telephone!=null">telephone=#{telephone},</if>
 			<if test="email!=null">email=#{email},</if>
-			<if test="login_count!=null">login_count=#{login_count},</if>
-			<if test="login_status!=null">login_status=#{login_status},</if>
+			<if test="loginCount!=null">login_count=#{loginCount},</if>
+			<if test="loginStatus!=null">login_status=#{loginStatus},</if>
 			<if test="age!=null">age=#{age},</if>
-			<if test="last_modify_time!=null">last_modify_time=#{last_modify_time},</if>
+			<if test="lastModifyTime!=null">last_modify_time=#{lastModifyTime},</if>
 		</trim>
 		WHERE id=#{id}
 	</update>
