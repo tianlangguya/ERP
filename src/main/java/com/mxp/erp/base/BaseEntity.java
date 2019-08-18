@@ -7,10 +7,10 @@ public abstract class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public long id;
-	public Date create_time;
-	public Date last_modify_time;
-	public String description;
+	private long id;
+	private Date creationTime;
+	private Date lastModifyTime;
+	private String description;
 
 	public long getId() {
 		return id;
@@ -20,21 +20,20 @@ public abstract class BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	
-	public Date getCreate_time() {
-		return create_time;
+	public Date getCreationTime() {
+		return creationTime;
 	}
 
-	public void setCreate_time(Date create_time) {
-		this.create_time = create_time;
+	public void setCreationTime(Date creationTime) {
+		this.creationTime = creationTime;
 	}
 
-	public Date getLast_modify_time() {
-		return last_modify_time;
+	public Date getLastModifyTime() {
+		return lastModifyTime;
 	}
 
-	public void setLast_modify_time(Date last_modify_time) {
-		this.last_modify_time = last_modify_time;
+	public void setLastModifyTime(Date lastModifyTime) {
+		this.lastModifyTime = lastModifyTime;
 	}
 
 	public String getDescription() {

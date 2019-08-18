@@ -13,7 +13,7 @@ import com.mxp.erp.dao.UserParam;
 import com.mxp.erp.entity.UserEntity;
 
 @Controller
-@RequestMapping(value = "/rest/user")
+@RequestMapping(value = "/user")
 public class UserController {
 
 	@Autowired
@@ -46,8 +46,6 @@ public class UserController {
 		}
 	}
 
-	// @RequestMapping(value = "/index")
-	// public String goIndex( ) {
-	// return "html/index";
-	// }
+
+
 }

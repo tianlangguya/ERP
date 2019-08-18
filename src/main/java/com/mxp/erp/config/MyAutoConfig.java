@@ -20,4 +20,5 @@ public class MyAutoConfig {
 		liquibase.setShouldRun(true);
 		return liquibase;
 	}
+
 }

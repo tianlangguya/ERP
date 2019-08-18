@@ -66,7 +66,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 				try {
 					jwtVerifier.verify(token);
 				} catch (JWTVerificationException e) {
-					throw new RuntimeException("401");
+					throw new RuntimeException("token验证失败，请重新登录");
 				}
 				return true;
 			}

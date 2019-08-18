@@ -6,26 +6,26 @@ public class UserEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	public String user_name;
+	private String userName;
 
-	public String password;
+	private String password;
 
-	public String telephone;
+	private String telephone;
 
-	public String email;
+	private String email;
 
-	public long login_count;
+	private long loginCount;
 
-	public String login_status;
+	private String loginStatus;
 
-	public long age;
+	private long age;
 
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -52,20 +52,20 @@ public class UserEntity extends BaseEntity {
 		this.email = email;
 	}
 
-	public long getLogin_count() {
-		return login_count;
+	public long getLoginCount() {
+		return loginCount;
 	}
 
-	public void setLogin_count(long login_count) {
-		this.login_count = login_count;
+	public void setLoginCount(long loginCount) {
+		this.loginCount = loginCount;
 	}
 
-	public String getLogin_status() {
-		return login_status;
+	public String getLoginStatus() {
+		return loginStatus;
 	}
 
-	public void setLogin_status(String login_status) {
-		this.login_status = login_status;
+	public void setLoginStatus(String loginStatus) {
+		this.loginStatus = loginStatus;
 	}
 
 	public long getAge() {
@@ -79,8 +79,8 @@ public class UserEntity extends BaseEntity {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return this.user_name + "|" + this.password + "|" + this.telephone + "|" + this.email + "|" + this.login_count
-				+ "|" + this.login_status + "|" + this.age + "|";
+		return this.userName + "|" + this.password + "|" + this.telephone + "|" + this.email + "|" + this.loginCount
+				+ "|" + this.loginStatus + "|" + this.age + "|";
 	}
 
 }
