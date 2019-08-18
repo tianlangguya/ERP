@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mxp.erp.api.IUserService;
+import com.mxp.erp.dao.UserParam;
 import com.mxp.erp.entity.UserEntity;
 
 @Controller
@@ -30,13 +31,12 @@ public class UserController {
 
 	@RequestMapping(value = "/getByName", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String getByName(@RequestBody String name, @RequestBody String password) {
-		UserEntity user = userService.getUserByUserName(name);
+	public String getByName(@RequestBody UserParam userParam) {
+		UserEntity user = userService.getUserByUserName(userParam.getUserName());
 		if (user == null) {
 			return "用户不存在！";
 		} else {
-			if (user.getPassword().equals(password)) {
-
+			if (user.getPassword().equals(userParam.getPassword())) {
 				// BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
 				// String enPassword = encoder.encode(password);加密
 				return "登陆成功！";
