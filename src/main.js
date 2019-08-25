@@ -6,6 +6,8 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import axios from 'axios'
+import api from './api/install'
+Vue.use(api)
 
 Vue.use(ElementUI)
 Vue.prototype.$axios = axios;

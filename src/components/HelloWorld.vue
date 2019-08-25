@@ -1,13 +1,17 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <router-link to='/login'><a href='/login'>登录</a></router-link>
+        <router-link to='/login'><a href='/login'>登录</a></router-link>
+        <router-link to='/register'><a href='/register'>注册</a></router-link>
+        <router-link to='/forgetPassword'><a href='/register'>忘记密码</a></router-link>
+        <router-link to='/forgetPassword'><a href='/register'>修改密码</a></router-link>
+        <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Index',
   data () {
     return {
       msg: '页面路由'

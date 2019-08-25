@@ -18,8 +18,28 @@
             </el-col>
         </el-row>
         <el-row>
-            <el-button type="primary" @click="onSubmit">登录</el-button>
-            <el-button type="primary">注册</el-button>
+            <el-col :span="16">
+                    <el-form-item label="重复密码">
+                        <el-input v-model="form.password"></el-input>
+                    </el-form-item>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="24">
+                    <el-form-item label="手机号">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="30">
+                    <el-form-item label="邮箱">
+                        <el-input v-model="form.name"></el-input>
+                    </el-form-item>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-button type="primary" @click="onSubmit">注册</el-button>
         </el-row>
         </el-form>
     </el-container>
@@ -28,35 +48,23 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
     return {
-      message: '办公考勤erp系统登录页面',
+      message: '办公考勤erp系统注册页面',
       form: {
         name: '',
         password: ''
       }
     }
   },
-  created(){
-      this.onSubmit()
-  },
   methods: {
-    async onSubmit () {
+    onSubmit () {
       console.log('submit!');
       console.log('1',this.form.name+this.form.password);
-
-          try {
-        //定义参数对象
-      let params={
-          userName:"TLGY",
-          password:"123456"
-      }
-        let res = await this.$api.login.matches(params)
-        console.log('​getMatches -> res', res)
-      } catch (e) {
-        console.log('​catch -> e', e)
-      }
+      this.$axios.get('localhost:8888/erp/rest/user/getByName').then(res=>{
+          console.log(res,res);
+      })
     }
   }
 }
@@ -70,6 +78,9 @@ export default {
 }
 .el-col-30{
     margin-left: 13px;
+}
+.el-col-16{
+    margin-left: -16px;
 }
 
 </style>
