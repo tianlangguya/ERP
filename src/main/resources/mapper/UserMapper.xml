@@ -24,6 +24,34 @@
 		resultType="com.mxp.erp.entity.UserEntity">
 		select * from sys_user where user_name = #{name}
 	</select>
+	
+	<insert id="register" parameterType="com.mxp.erp.entity.UserEntity">
+		insert into sys_user values(#{id},#{creationTime},#{description},#{lastModifyTime},#{userName},#{password},#{telephone},#{email},#{loginCount},#{loginStatus},#{age})
+	</insert>
+	
+	<update id="updatePassword" parameterType="com.mxp.erp.entity.UserEntity">
+		update sys_user set PASSWORD = #{password} where user_name = #{userName}
+	</update>
+	
+	<update id="updateErrorPasswordTimes" parameterType="com.mxp.erp.entity.UserEntity">
+		update sys_user set LOGIN_ERROR_TIMES = #{loingErrorTimes} where user_name = #{userName}
+	</update>
+	
+	<select id="getAllUser" resultType="com.mxp.erp.entity.UserEntity">
+		select * from sys_user
+	</select>
+	
+	<select id="getLoginErrorTimesUser" resultType="com.mxp.erp.entity.UserEntity">
+		select * from sys_user u,sys_env e where u.LOGIN_ERROR_TIMES >= e.LOGIN_ERROR_TIMES_LIMIT
+	</select>
+	
+	<select id="getLevelOfficeUser" resultType="com.mxp.erp.entity.UserEntity">
+		select * from sys_user where state = 2
+	</select>
+	
+	<delete id="deleteUser" parameterType="com.mxp.erp.entity.UserEntity">
+		delete from sys_user where user_name = #{userName}
+	</delete>
 
 	<update id="update"
 		parameterType="com.mxp.erp.entity.UserEntity">

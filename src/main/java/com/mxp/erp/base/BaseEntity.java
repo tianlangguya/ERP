@@ -7,16 +7,16 @@ public abstract class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
+	private String id;
 	private Date creationTime;
 	private Date lastModifyTime;
 	private String description;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

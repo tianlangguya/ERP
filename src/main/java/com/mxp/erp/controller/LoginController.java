@@ -36,8 +36,6 @@ public class LoginController {
 	@ResponseBody
 	public RestResponse<JSONObject> login(@RequestBody UserParam param, HttpServletResponse response) {
 		RestResponse<JSONObject> restResponse = new RestResponse<>();
-		restResponse.setCode(RestResponseCode.OK);
-		restResponse.setSuccess(true);
 		String userName = param.getUserName();
 		UserEntity user = userService.getByName(userName);
 		if (user == null) {
@@ -68,8 +66,6 @@ public class LoginController {
 	@ResponseBody
 	public RestResponse<JSONObject> changePassword(@RequestBody UserParam param, HttpServletResponse response) {
 		RestResponse<JSONObject> restResponse = new RestResponse<>();
-		restResponse.setCode(RestResponseCode.OK);
-		restResponse.setSuccess(true);
 		String userName = param.getUserName();
 		UserEntity user = userService.getByName(userName);
 		String newPassword = param.getNewPassword();
@@ -105,8 +101,6 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public RestResponse<JSONObject> logout(@RequestBody UserParam param) {
 		RestResponse<JSONObject> restResponse = new RestResponse<>();
-		restResponse.setCode(RestResponseCode.OK);
-		restResponse.setSuccess(true);
 		String userName = param.getUserName();
 		UserEntity user = userService.getByName(userName);
 		if (user == null) {

@@ -22,6 +22,44 @@
 			<column name="LOGIN_COUNT" type="bigint" />
 			<column name="LOGIN_STATUS" type="varchar(128)" />
 			<column name="AGE" type="bigint" />
+			<column name="DepartureTime" type="datetime2" />
+			<column name="state" type="tinyint(2)" defaultValue="1" />
+			<column name="LOGIN_ERROR_TIME" type="datetime2" />
+			<column name="LOGIN_ERROR_TIMES" type="tinyint(2)" defaultValue="0" />
+		</createTable>
+	</changeSet>
+	<changeSet id="CREATE_SYS_ENVIRONMENT" author="mxp">
+		<validCheckSum>any</validCheckSum>
+		<createTable tableName="SYS_ENV">
+			<column name="ID" type="bigint">
+				<constraints primaryKey="true"
+					primaryKeyName="PK_SYS_ENV" />
+			</column>
+			<column name="LOGIN_ERROR_TIMES_LIMIT" type="tinyint(2)" defaultValue="5"/><!-- 登陆错误次数上限 -->
+		</createTable>
+	</changeSet>
+	<changeSet id="CREATE_SYS_INFORMATION" author="mxp">
+		<validCheckSum>any</validCheckSum>
+		<createTable tableName="SYS_INF">
+			<column name="ID" type="bigint">
+				<constraints primaryKey="true"
+					primaryKeyName="PK_SYS_INF" />
+			</column>
+			<column name="name" type="varchar(255)"/>
+			<column name="department" type="tinyint(2)"/><!-- 部门id -->
+			<column name="position" type="tinyint(2)"/><!-- 职位id -->
+			<column name="class_of_positions" type="varchar(10)" defaultValue="1-1"/><!-- 职级 -->
+			<column name="nationality" type="varchar(50)" defaultValue="中华人民共和国"/><!-- 国家 -->
+			<column name="document_type" type="varchar(20)" defaultValue="身份证"/><!-- 证件类型 -->
+			<column name="document_num" type="varchar(20)"/><!-- 证件编号 -->
+			<column name="political_appearance" type="varchar(30)" defaultValue="群众"/><!-- 政治面貌 -->
+			<column name="marital_status" type="varchar(30)" defaultValue="未婚"/><!-- 婚姻状况 -->
+			<column name="birth" type="tinyint(2)" defaultValue="0"/><!-- 生育状况 -->
+			<column name="registered_residence" type="varchar(200)"/><!-- 户口所在地 -->
+			<column name="place_of_residence" type="varchar(200)"/><!-- 现居住地 -->
+			
+			<column name="life_photo" type="varchar(300)"/><!-- 生活照,存路径即可 -->
+			<column name="normal_photo" type="varchar(300)"/><!-- 免冠照片 -->
 		</createTable>
 	</changeSet>
 </databaseChangeLog>

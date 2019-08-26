@@ -29,7 +29,8 @@ public class RestResponse<T> implements Serializable {
 	private String exception;
 
 	public RestResponse() {
-
+		success = true;
+		code = RestResponseCode.OK;
 	}
 
 	public RestResponse(int code, boolean success, String message, T data) {

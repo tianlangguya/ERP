@@ -4,12 +4,42 @@ public class UserParam {
 	/**
 	 * 用户名
 	 */
-	public String userName;
+	private String userName;
 	/**
 	 * 密码
 	 */
-	public String password;
+	private String password;
 	
+	private String telephone;
+	private String sex;
+	private String oldPassword;
+	private String newPassword;
+	private String email; 
+	
+	public String getOldPassword() {
+		return oldPassword;
+	}
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -21,6 +51,12 @@ public class UserParam {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
