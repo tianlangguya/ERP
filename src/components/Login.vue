@@ -39,24 +39,18 @@ export default {
     }
   },
   created(){
-      this.onSubmit()
   },
   methods: {
     async onSubmit () {
       console.log('submit!');
       console.log('1',this.form.name+this.form.password);
-
-          try {
-        //定义参数对象
       let params={
           userName:"TLGY",
           password:"123456"
       }
-        let res = await this.$api.login.matches(params)
-        console.log('​getMatches -> res', res)
-      } catch (e) {
-        console.log('​catch -> e', e)
-      }
+      this.$axios.post('/api/erp/login',params).then(res=>{
+          console.log(res,res);
+      })
     }
   }
 }
