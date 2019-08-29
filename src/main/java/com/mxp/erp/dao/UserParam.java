@@ -11,10 +11,10 @@ public class UserParam {
 	private String password;
 	
 	private String telephone;
-	private String sex;
-	private String oldPassword;
-	private String newPassword;
-	private String email; 
+	private String sex;//性别
+	private String oldPassword;//旧密码
+	private String newPassword;//新密码
+	private String email; //邮箱
 	
 	public String getOldPassword() {
 		return oldPassword;

@@ -39,15 +39,13 @@ public class LoginController {
 		String userName = param.getUserName();
 		UserEntity user = userService.getByName(userName);
 		if (user == null) {
-			restResponse.setCode(RestResponseCode.NOTFOUND);
-			restResponse.setSuccess(false);
-			restResponse.setMessage("用户名不存在");
+			restResponse.setCodeAndIsSuccess(RestResponseCode.NOTFOUND, false);
+			restResponse.setMessage(RestResponseCode.NOTFOUND_USER);
 			return restResponse;
 		}
 		if (!user.getPassword().equals(param.getPassword())) {
-			restResponse.setCode(RestResponseCode.ERROR);
-			restResponse.setSuccess(false);
-			restResponse.setMessage("密码错误");
+			restResponse.setCodeAndIsSuccess(RestResponseCode.ERROR ,false);
+			restResponse.setMessage(RestResponseCode.PASSWORD_ERROR);
 			return restResponse;
 		}
 
@@ -70,21 +68,18 @@ public class LoginController {
 		UserEntity user = userService.getByName(userName);
 		String newPassword = param.getNewPassword();
 		if (newPassword == null) {
-			restResponse.setCode(RestResponseCode.NOTFOUND);
-			restResponse.setSuccess(false);
-			restResponse.setMessage("新密码不能为空");
+			restResponse.setCodeAndIsSuccess(RestResponseCode.NOTFOUND, false);
+			restResponse.setMessage(RestResponseCode.NEW_PASSWORD_NULL);
 			return restResponse;
 		}
 		if (user == null) {
-			restResponse.setCode(RestResponseCode.NOTFOUND);
-			restResponse.setSuccess(false);
-			restResponse.setMessage("用户名不存在");
+			restResponse.setCodeAndIsSuccess(RestResponseCode.NOTFOUND, false);
+			restResponse.setMessage(RestResponseCode.NOTFOUND_USER);
 			return restResponse;
 		}
 		if (!user.getPassword().equals(param.getPassword())) {
-			restResponse.setCode(RestResponseCode.ERROR);
-			restResponse.setSuccess(false);
-			restResponse.setMessage("密码错误");
+			restResponse.setCodeAndIsSuccess(RestResponseCode.ERROR ,false);
+			restResponse.setMessage(RestResponseCode.PASSWORD_ERROR);
 			return restResponse;
 		}
 		user.setPassword(param.getNewPassword());
@@ -104,9 +99,8 @@ public class LoginController {
 		String userName = param.getUserName();
 		UserEntity user = userService.getByName(userName);
 		if (user == null) {
-			restResponse.setCode(RestResponseCode.NOTFOUND);
-			restResponse.setSuccess(false);
-			restResponse.setMessage("用户名不存在");
+			restResponse.setCodeAndIsSuccess(RestResponseCode.NOTFOUND, false);
+			restResponse.setMessage(RestResponseCode.NOTFOUND_USER);
 			return restResponse;
 		}
 		user.setLastModifyTime(new Date());

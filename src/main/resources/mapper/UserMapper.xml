@@ -16,13 +16,15 @@
 	</resultMap>
 
 	<select id="getById" resultType="com.mxp.erp.entity.UserEntity">
-		select * from sys_user where id
-		= #{id}
+		select * from sys_user where id = #{id}
 	</select>
 
-	<select id="getUserByUserName"
-		resultType="com.mxp.erp.entity.UserEntity">
+	<select id="getUserByUserName" resultType="com.mxp.erp.entity.UserEntity">
 		select * from sys_user where user_name = #{name}
+	</select>
+	
+	<select id="getUserInfoByUserId" resultType="com.mxp.erp.entity.UserEntity">
+		
 	</select>
 	
 	<insert id="register" parameterType="com.mxp.erp.entity.UserEntity">

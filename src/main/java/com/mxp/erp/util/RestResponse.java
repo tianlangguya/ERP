@@ -48,6 +48,11 @@ public class RestResponse<T> implements Serializable {
 	public void setCode(int code) {
 		this.code = code;
 	}
+	
+	public void setCodeAndIsSuccess(int code, boolean success) {
+		this.code = code;
+		this.success = success;
+	}
 
 	public boolean isSuccess() {
 		return success;
