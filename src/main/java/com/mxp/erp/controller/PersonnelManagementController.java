@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mxp.erp.api.IUserService;
-import com.mxp.erp.dao.UserParam;
+import com.mxp.erp.dto.UserParam;
 import com.mxp.erp.entity.UserEntity;
-import com.mxp.erp.util.IdGenerator;
 
 @Controller
 @RequestMapping(value = "/pm")
@@ -24,7 +23,7 @@ public class PersonnelManagementController {
 
 	@RequestMapping(value = "/getById", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String getById(@RequestBody long id) {
+	public String getById(@RequestBody String id) {
 		UserEntity user = userService.getById(id);
 		if (user != null) {
 			return user.toString();
@@ -66,8 +65,7 @@ public class PersonnelManagementController {
 			Date date = new Date();
 			user.setCreationTime(date);
 			user.setLastModifyTime(date);
-			user.setId(IdGenerator.generate());
-			userService.register(user);
+			userService.insert(user);
 			return "注册成功！";
 		}else {
 			return "用户已存在！";

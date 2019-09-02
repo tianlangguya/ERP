@@ -2,7 +2,7 @@ package com.mxp.erp.interceptor;
 
 import java.util.Properties;
 
-import org.apache.ibatis.executor.statement.StatementHandler;
+import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -13,12 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.mxp.erp.dao.UserDao;
-import com.mxp.erp.entity.UserEntity;
-import com.mysql.jdbc.Statement;
 
-//@Component
+@Component
 //@Configuration
-@Intercepts({ @Signature(type = UserDao.class, method = "update", args = { UserEntity.class }) })
+@Intercepts({ @Signature(type = UserDao.class, method = "update", args = { MappedStatement.class, Object.class }) })
 public class MybatisUpdateInterceptor implements Interceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(MybatisUpdateInterceptor.class);
@@ -31,7 +29,7 @@ public class MybatisUpdateInterceptor implements Interceptor {
 
 	@Override
 	public Object plugin(Object o) {
-		return Plugin.wrap(o,this);
+		return Plugin.wrap(o, this);
 	}
 
 	@Override

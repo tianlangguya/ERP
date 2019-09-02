@@ -2,35 +2,47 @@ package com.mxp.erp.entity;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.mxp.erp.base.BaseEntity;
 
+@TableName("sys_user")
 public class UserEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
+	@TableField("USER_NAME")
 	private String userName;
 
+	@TableField("PASSWORD")
 	private String password;
 
+	@TableField("TELEPHONE")
 	private String telephone;
 
+	@TableField("EMAIL")
 	private String email;
 
+	@TableField("LOGIN_COUNT")
 	private long loginCount;
 
+	@TableField("LOGIN_STATUS")
 	private String loginStatus;
-	
+
+	@TableField("LOGIN_ERROR_TIMES")
 	private int loginErrorTimes;
-	
-	private int loginErrorTimesLimit;
-	
+
+	@TableField("LOGIN_ERROR_TIME")
 	private Date loginErrorTime;
-	
+
+	@TableField("STATE")
 	private int state;
 
+	@TableField("AGE")
 	private long age;
-	
-	private Date DepartureTime;
+
+	@TableField("DEPARTURE_TIME")
+	private Date departureTime;
 
 	public String getUserName() {
 		return userName;
@@ -87,7 +99,7 @@ public class UserEntity extends BaseEntity {
 	public void setAge(long age) {
 		this.age = age;
 	}
-	
+
 	public int getLoginErrorTimes() {
 		return loginErrorTimes;
 	}
@@ -112,19 +124,11 @@ public class UserEntity extends BaseEntity {
 	}
 
 	public Date getDepartureTime() {
-		return DepartureTime;
+		return departureTime;
 	}
 
 	public void setDepartureTime(Date departureTime) {
-		DepartureTime = departureTime;
-	}
-
-	public int getLoginErrorTimesLimit() {
-		return loginErrorTimesLimit;
-	}
-
-	public void setLoginErrorTimesLimit(int loginErrorTimesLimit) {
-		this.loginErrorTimesLimit = loginErrorTimesLimit;
+		this.departureTime = departureTime;
 	}
 
 	public Date getLoginErrorTime() {

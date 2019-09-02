@@ -8,7 +8,7 @@
 	<changeSet id="CREATE_SYS_USER" author="mxp">
 		<validCheckSum>any</validCheckSum>
 		<createTable tableName="SYS_USER">
-			<column name="ID" type="bigint">
+			<column name="ID" type="varchar(50)">
 				<constraints primaryKey="true"
 					primaryKeyName="PK_SYS_USER" />
 			</column>
@@ -22,8 +22,8 @@
 			<column name="LOGIN_COUNT" type="bigint" />
 			<column name="LOGIN_STATUS" type="varchar(128)" />
 			<column name="AGE" type="bigint" />
-			<column name="DepartureTime" type="datetime2" />
-			<column name="state" type="tinyint(2)" defaultValue="1" />
+			<column name="DEPARTURE_TIME" type="datetime2" />
+			<column name="STATE" type="tinyint(2)" defaultValue="1" />
 			<column name="LOGIN_ERROR_TIME" type="datetime2" />
 			<column name="LOGIN_ERROR_TIMES" type="tinyint(2)" defaultValue="0" />
 		</createTable>

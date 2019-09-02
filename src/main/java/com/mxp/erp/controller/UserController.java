@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mxp.erp.api.IUserService;
-import com.mxp.erp.dao.UserParam;
+import com.mxp.erp.dto.UserParam;
 import com.mxp.erp.entity.UserEntity;
-import com.mxp.erp.util.IdGenerator;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -24,7 +23,7 @@ public class UserController {
 
 	@RequestMapping(value = "/getById", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String getById(@RequestBody long id) {
+	public String getById(@RequestBody String id) {
 		UserEntity user = userService.getById(id);
 		if (user != null) {
 			return user.toString();
@@ -44,19 +43,20 @@ public class UserController {
 				// String enPassword = encoder.encode(password);加密
 				return "登陆成功！";
 			} else {
-				if(user.getLoginErrorTimes() > 5) {
+				if (user.getLoginErrorTimes() > 5) {
 					return "错误次数超过限制，请明天再试！";
-				}else {
+				} else {
 					user.setLoginErrorTimes(user.getLoginErrorTimes());
-					userService.updateErrorPasswordTimes(user);
+					userService.update(user);
 				}
 				return "密码错误！";
 			}
 		}
 	}
-	
+
 	/**
 	 * 注冊
+	 * 
 	 * @param userParam
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class UserController {
 	@ResponseBody
 	public String registerUser(@RequestBody UserParam userParam) {
 		UserEntity user = userService.getByName(userParam.getUserName());
-		if(user == null) {
+		if (user == null) {
 			user = new UserEntity();
 			user.setUserName(userParam.getUserName());
 			user.setPassword(userParam.getPassword());
@@ -72,16 +72,16 @@ public class UserController {
 			Date date = new Date();
 			user.setCreationTime(date);
 			user.setLastModifyTime(date);
-			user.setId(IdGenerator.generate());
-			userService.register(user);
+			userService.insert(user);
 			return "注册成功！";
-		}else {
+		} else {
 			return "用户已存在！";
 		}
 	}
-	
+
 	/**
 	 * 修改密码，更新密码
+	 * 
 	 * @param userParam
 	 * @return
 	 */
@@ -89,25 +89,26 @@ public class UserController {
 	@ResponseBody
 	public String updatePassword(@RequestBody UserParam userParam) {
 		UserEntity user = userService.getByName(userParam.getUserName());
-		if(user == null) {
+		if (user == null) {
 			return "用户不存在！";
-		}else {
-			if(user.getPassword().equals(userParam.getOldPassword())) {
-				if(userParam.getNewPassword()!="") {
+		} else {
+			if (user.getPassword().equals(userParam.getOldPassword())) {
+				if (userParam.getNewPassword() != "") {
 					user.setPassword(userParam.getNewPassword());
-					userService.updatePassword(user);
+					userService.update(user);
 					return "更换密码成功";
-				}else {
+				} else {
 					return "新密码是空的！";
 				}
-			}else {
+			} else {
 				return "原密码不正确";
 			}
 		}
 	}
-	
+
 	/**
 	 * 忘记密码，输入用户名和邮箱
+	 * 
 	 * @param userParam
 	 * @return
 	 */
@@ -115,12 +116,12 @@ public class UserController {
 	@ResponseBody
 	public String forgetPassword(@RequestBody UserParam userParam) {
 		UserEntity user = userService.getByName(userParam.getUserName());
-		if(user == null) {
+		if (user == null) {
 			return "用户不存在！";
-		}else {
-			if(user.getEmail().equals(userParam.getEmail())) {
+		} else {
+			if (user.getEmail().equals(userParam.getEmail())) {
 				return "邮箱也是对的！";
-			}else {
+			} else {
 				return "邮箱错误！";
 			}
 		}

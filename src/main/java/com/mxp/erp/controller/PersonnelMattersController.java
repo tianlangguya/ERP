@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mxp.erp.api.ITokenService;
 import com.mxp.erp.api.IUserService;
-import com.mxp.erp.dao.UserParam;
+import com.mxp.erp.dto.UserParam;
 import com.mxp.erp.entity.UserEntity;
 import com.mxp.erp.util.RestResponse;
 import com.mxp.erp.util.RestResponseCode;
@@ -28,9 +27,7 @@ public class PersonnelMattersController {
 	
 	@Autowired
 	private IUserService userService;
-	
-	@Autowired
-	private ITokenService tokenService;
+
 	
 	/**
 	 * 离职

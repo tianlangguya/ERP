@@ -1,6 +1,6 @@
 package com.mxp.erp.base;
 
-public interface BaseDao<T extends BaseEntity> {
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 
-	T getById(long id);
+public interface BaseDao<T extends BaseEntity> extends BaseMapper<T> {
 }
