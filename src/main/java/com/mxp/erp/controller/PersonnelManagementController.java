@@ -1,7 +1,5 @@
 package com.mxp.erp.controller;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -47,9 +45,10 @@ public class PersonnelManagementController {
 			}
 		}
 	}
-	
+
 	/**
 	 * 新增人员
+	 * 
 	 * @param userParam
 	 * @return
 	 */
@@ -57,20 +56,16 @@ public class PersonnelManagementController {
 	@ResponseBody
 	public String newlyAddedWorker(@RequestBody UserParam userParam) {
 		UserEntity user = userService.getByName(userParam.getUserName());
-		if(user == null) {
+		if (user == null) {
 			user = new UserEntity();
 			user.setUserName(userParam.getUserName());
 			user.setPassword(userParam.getPassword());
 			user.setTelephone(userParam.getTelephone());
-			Date date = new Date();
-			user.setCreationTime(date);
-			user.setLastModifyTime(date);
 			userService.insert(user);
 			return "注册成功！";
-		}else {
+		} else {
 			return "用户已存在！";
 		}
 	}
-	
-	
+
 }

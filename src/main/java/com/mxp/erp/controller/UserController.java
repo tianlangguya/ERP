@@ -1,6 +1,7 @@
 package com.mxp.erp.controller;
 
-import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -10,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.mxp.erp.api.IUserService;
 import com.mxp.erp.dto.UserParam;
 import com.mxp.erp.entity.UserEntity;
+import com.mxp.erp.util.RestResponse;
+import com.mxp.erp.util.RestResponseCode;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -20,6 +25,31 @@ public class UserController {
 
 	@Autowired
 	public IUserService userService;
+
+	@RequestMapping(value = "/getPage", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public RestResponse<List<String>> getPage() {
+		RestResponse<List<String>> restResponse = new RestResponse<>();
+		Page<UserEntity> page = new Page<>();
+		page.setCurrent(1);
+		page.setSize(4);
+		List<UserEntity> user = userService.getObjectByPage(page, new EntityWrapper<>());
+		List<String> userString = user.stream().map(UserEntity::toString).collect(Collectors.toList());
+		restResponse.setCodeAndIsSuccess(RestResponseCode.OK, true);
+		restResponse.setData(userString);
+		return restResponse;
+	}
+
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public RestResponse<List<String>> getAll() {
+		RestResponse<List<String>> restResponse = new RestResponse<>();
+		List<UserEntity> user = userService.getAllObject();
+		List<String> userString = user.stream().map(u -> u.toString()).collect(Collectors.toList());
+		restResponse.setCodeAndIsSuccess(RestResponseCode.OK, true);
+		restResponse.setData(userString);
+		return restResponse;
+	}
 
 	@RequestMapping(value = "/getById", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -69,9 +99,6 @@ public class UserController {
 			user.setUserName(userParam.getUserName());
 			user.setPassword(userParam.getPassword());
 			user.setTelephone(userParam.getTelephone());
-			Date date = new Date();
-			user.setCreationTime(date);
-			user.setLastModifyTime(date);
 			userService.insert(user);
 			return "注册成功！";
 		} else {

@@ -29,7 +29,7 @@ public class UserService extends BaseService<UserEntity> implements IUserService
 		case LEVEL_OFFICE:
 			return userDao.getLevelOfficeUser();
 		default:
-			System.out.println("类型错误！");
+			System.out.println("类型错误!");
 			return null;
 		}
 	}
