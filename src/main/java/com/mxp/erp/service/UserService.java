@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mxp.erp.api.IUserService;
 import com.mxp.erp.base.BaseService;
@@ -22,6 +23,7 @@ public class UserService extends BaseService<UserEntity> implements IUserService
 	}
 
 	@Override
+	@Transactional
 	public List<UserEntity> getAllUserByScheduleType(ScheduleEnum type) {
 		switch (type) {
 		case LOGIN_ERROR_TIMES:
