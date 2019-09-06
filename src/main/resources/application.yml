@@ -35,7 +35,7 @@ mybatis-plus:
     default-statement-timeout: 30
     cache-enabled: true
 server:
-  port: 8888
+  port: 8080
   context-path: /erp
 logging:
   level:

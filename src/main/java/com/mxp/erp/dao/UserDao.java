@@ -2,6 +2,7 @@ package com.mxp.erp.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.mxp.erp.base.BaseDao;
@@ -22,5 +23,7 @@ public interface UserDao extends BaseDao<UserEntity> {
 	ArrayList<UserEntity> getLoginErrorTimesUser();
 
 	ArrayList<UserEntity> getLevelOfficeUser();
+
+	UserEntity getByNameAndPassword(@Param("name") String name, @Param("password") String password);
 
 }

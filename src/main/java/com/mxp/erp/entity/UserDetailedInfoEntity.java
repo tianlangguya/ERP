@@ -2,7 +2,7 @@ package com.mxp.erp.entity;
 
 import java.util.Date;
 
-public class UserDetailedInfo extends UserEntity{
+public class UserDetailedInfoEntity extends UserEntity{
 	/**
 	 * 
 	 */

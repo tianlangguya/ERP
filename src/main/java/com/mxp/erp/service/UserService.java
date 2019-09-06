@@ -35,4 +35,9 @@ public class UserService extends BaseService<UserEntity> implements IUserService
 			return null;
 		}
 	}
+
+	@Override
+	public UserEntity getByNameAndPassword(String name, String password) {
+		return userDao.getByNameAndPassword(name, password);
+	}
 }

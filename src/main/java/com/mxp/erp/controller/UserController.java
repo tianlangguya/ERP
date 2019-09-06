@@ -61,29 +61,6 @@ public class UserController {
 		return "该用户不存在";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public String getByName(@RequestBody UserParam userParam) {
-		UserEntity user = userService.getByName(userParam.getUserName());
-		if (user == null) {
-			return "用户不存在！";
-		} else {
-			if (user.getPassword().equals(userParam.getPassword())) {
-				// BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
-				// String enPassword = encoder.encode(password);加密
-				return "登陆成功！";
-			} else {
-				if (user.getLoginErrorTimes() > 5) {
-					return "错误次数超过限制，请明天再试！";
-				} else {
-					user.setLoginErrorTimes(user.getLoginErrorTimes());
-					userService.update(user);
-				}
-				return "密码错误！";
-			}
-		}
-	}
-
 	/**
 	 * 注冊
 	 * 

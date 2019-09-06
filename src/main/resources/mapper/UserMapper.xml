@@ -20,6 +20,12 @@
 		select * from sys_user where user_name = #{name}
 	</select>
 
+	<select id="getByNameAndPassword"
+		resultType="com.mxp.erp.entity.UserEntity">
+		select * from sys_user where user_name = #{name} and
+		password=#{password}
+	</select>
+
 	<select id="getUserInfoByUserId"
 		resultType="com.mxp.erp.entity.UserEntity">
 
