@@ -1,6 +1,8 @@
 package com.mxp.erp.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,9 @@ public class RolePermissionService extends BaseService<RolePermissionEntity> imp
 
 	@Override
 	public List<RolePermissionEntity> getByRoleId(String roleId) {
-
-		return rolePermissionDao.getByRoleId(roleId);
+		Map<String,Object> map=new HashMap<>();
+		map.put(RolePermissionEntity.ROLE_ID,roleId);
+		return rolePermissionDao.selectByMap(map);
 	}
 
 }

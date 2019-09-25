@@ -9,7 +9,9 @@ public class RoleEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@TableField("ROLE_Name")
+	public static final String ROLE_NAME="ROLE_NAME";
+
+	@TableField("ROLE_NAME")
 	private String roleName;
 
 	public String getRoleName() {

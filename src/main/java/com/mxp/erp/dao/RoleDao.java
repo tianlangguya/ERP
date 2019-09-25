@@ -7,5 +7,4 @@ import com.mxp.erp.entity.RoleEntity;
 
 @Repository("roleDao")
 public interface RoleDao extends BaseDao<RoleEntity> {
-
 }

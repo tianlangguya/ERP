@@ -12,6 +12,10 @@ public class RolePermissionEntity extends BaseEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public static final String ROLE_ID="ROLE_ID";
+
+	public static final String PERMISSION_ID="PERMISSION_ID";
+
 	@TableField("ROLE_ID")
 	private String roleId;
 

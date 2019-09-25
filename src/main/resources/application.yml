@@ -11,6 +11,7 @@ spring:
     view:
       prefix: /
       suffix: .html
+    static-path-pattern: /**
   redis:
     database: 0
     host: 127.0.0.1

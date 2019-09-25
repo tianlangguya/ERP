@@ -11,7 +11,16 @@ public abstract class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@TableId(value = "id", type = IdType.ID_WORKER_STR)
+	public static final String ID="ID";
+
+	public static final String CREATION_TIME="CREATION_TIME";
+
+	public static final String LAST_MODIFY_TIME="LAST_MODIFY_TIME";
+
+	public static final String DESCRIPTION="DESCRIPTION";
+
+
+	@TableId(value = "ID", type = IdType.ID_WORKER_STR)
 	private String id;
 	
 	@TableField("CREATION_TIME")

@@ -1,5 +1,6 @@
 package com.mxp.erp.controller;
 
+import com.mxp.erp.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -36,9 +37,7 @@ public class PersonnelManagementController {
 		if (user == null) {
 			return "用户不存在！";
 		} else {
-			if (user.getPassword().equals(userParam.getPassword())) {
-				// BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
-				// String enPassword = encoder.encode(password);加密
+			if (MD5Utils.getSaltverifyMD5(userParam.getPassword(),user.getPassword())) {
 				return "登陆成功！";
 			} else {
 				return "登陆失败！";
@@ -59,7 +58,7 @@ public class PersonnelManagementController {
 		if (user == null) {
 			user = new UserEntity();
 			user.setUserName(userParam.getUserName());
-			user.setPassword(userParam.getPassword());
+			user.setMD5SaltPassword(userParam.getPassword());
 			user.setTelephone(userParam.getTelephone());
 			userService.insert(user);
 			return "注册成功！";

@@ -8,4 +8,6 @@ import com.mxp.erp.entity.RoleEntity;
 public interface IRoleService extends IBaseService<RoleEntity> {
 
 	public List<RoleEntity> getByUserId(String userId);
+
+	public RoleEntity getByName(String roleName);
 }

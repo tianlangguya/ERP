@@ -130,4 +130,17 @@
 		</createTable>
 	</changeSet>
 
+	<changeSet id="CREATE_PERSISTENT_LOGINS" author="mxp">
+		<validCheckSum>any</validCheckSum>
+		<createTable tableName="PERSISTENT_LOGINS">
+			<column name="SERIES" type="varchar(50)">
+				<constraints primaryKey="true"
+							 primaryKeyName="PK_PERSISTENT_LOGINS" />
+			</column>
+			<column name="USERNAME" type="varchar(50)" />
+			<column name="TOKEN" type="varchar(50)" />
+			<column name="LAST_USED" type="timestamp" />
+		</createTable>
+	</changeSet>
+
 </databaseChangeLog>

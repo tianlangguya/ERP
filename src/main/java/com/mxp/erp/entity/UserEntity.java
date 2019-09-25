@@ -5,138 +5,165 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.mxp.erp.base.BaseEntity;
+import com.mxp.erp.util.MD5Utils;
 
 @TableName("sys_user")
 public class UserEntity extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@TableField("USER_NAME")
-	private String userName;
+    public static final String USER_NAME = "USER_NAME";
 
-	@TableField("PASSWORD")
-	private String password;
+    public static final String PASSWORD = "PASSWORD";
 
-	@TableField("TELEPHONE")
-	private String telephone;
+    public static final String TELEPHONE = "TELEPHONE";
 
-	@TableField("EMAIL")
-	private String email;
+    public static final String EMAIL = "EMAIL";
 
-	@TableField("LOGIN_COUNT")
-	private long loginCount;
+    public static final String LOGIN_COUNT = "LOGIN_COUNT";
 
-	@TableField("LOGIN_STATUS")
-	private String loginStatus;
+    public static final String LOGIN_STATUS = "LOGIN_STATUS";
 
-	@TableField("LOGIN_ERROR_TIMES")
-	private int loginErrorTimes;
+    public static final String LOGIN_ERROR_TIMES = "LOGIN_ERROR_TIMES";
 
-	@TableField("LOGIN_ERROR_TIME")
-	private Date loginErrorTime;
+    public static final String LOGIN_ERROR_TIME = "LOGIN_ERROR_TIME";
 
-	@TableField("STATE")
-	private int state;
+    public static final String STATE = "STATE";
 
-	@TableField("AGE")
-	private long age;
+    public static final String AGE = "AGE";
 
-	@TableField("DEPARTURE_TIME")
-	private Date departureTime;
+    public static final String DEPARTURE_TIME = "DEPARTURE_TIME";
 
-	public String getUserName() {
-		return userName;
-	}
+    @TableField("USER_NAME")
+    private String userName;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    @TableField("PASSWORD")
+    private String password;
 
-	public String getPassword() {
-		return password;
-	}
+    @TableField("TELEPHONE")
+    private String telephone;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @TableField("EMAIL")
+    private String email;
 
-	public String getTelephone() {
-		return telephone;
-	}
+    @TableField("LOGIN_COUNT")
+    private long loginCount;
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+    @TableField("LOGIN_STATUS")
+    private String loginStatus;
 
-	public String getEmail() {
-		return email;
-	}
+    @TableField("LOGIN_ERROR_TIMES")
+    private int loginErrorTimes;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @TableField("LOGIN_ERROR_TIME")
+    private Date loginErrorTime;
 
-	public long getLoginCount() {
-		return loginCount;
-	}
+    @TableField("STATE")
+    private int state;
 
-	public void setLoginCount(long loginCount) {
-		this.loginCount = loginCount;
-	}
+    @TableField("AGE")
+    private long age;
 
-	public String getLoginStatus() {
-		return loginStatus;
-	}
+    @TableField("DEPARTURE_TIME")
+    private Date departureTime;
 
-	public void setLoginStatus(String loginStatus) {
-		this.loginStatus = loginStatus;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public long getAge() {
-		return age;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public void setAge(long age) {
-		this.age = age;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public int getLoginErrorTimes() {
-		return loginErrorTimes;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setLoginErrorTimes(int times) {
-		this.loginErrorTimes = times;
-	}
+    public void setMD5SaltPassword(String password) {
+        this.password = MD5Utils.getSaltMD5(password);
+    }
 
-	public int getState() {
-		return state;
-	}
+    public String getTelephone() {
+        return telephone;
+    }
 
-	public void setState(int state) {
-		this.state = state;
-	}
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return this.userName + "|" + this.password + "|" + this.telephone + "|" + this.email + "|" + this.loginCount
-				+ "|" + this.loginStatus + "|" + this.age + "|";
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Date getDepartureTime() {
-		return departureTime;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setDepartureTime(Date departureTime) {
-		this.departureTime = departureTime;
-	}
+    public long getLoginCount() {
+        return loginCount;
+    }
 
-	public Date getLoginErrorTime() {
-		return loginErrorTime;
-	}
+    public void setLoginCount(long loginCount) {
+        this.loginCount = loginCount;
+    }
 
-	public void setLoginErrorTime(Date loginErrorTime) {
-		this.loginErrorTime = loginErrorTime;
-	}
+    public String getLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(String loginStatus) {
+        this.loginStatus = loginStatus;
+    }
+
+    public long getAge() {
+        return age;
+    }
+
+    public void setAge(long age) {
+        this.age = age;
+    }
+
+    public int getLoginErrorTimes() {
+        return loginErrorTimes;
+    }
+
+    public void setLoginErrorTimes(int times) {
+        this.loginErrorTimes = times;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return this.userName + "|" + this.password + "|" + this.telephone + "|" + this.email + "|" + this.loginCount
+                + "|" + this.loginStatus + "|" + this.age + "|";
+    }
+
+    public Date getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public Date getLoginErrorTime() {
+        return loginErrorTime;
+    }
+
+    public void setLoginErrorTime(Date loginErrorTime) {
+        this.loginErrorTime = loginErrorTime;
+    }
 
 }

@@ -6,7 +6,7 @@
 
 	<select id="getByRoleId"
 		resultType="com.mxp.erp.entity.RolePermissionEntity">
-		select * from sys__role_permission where ROLE_ID =
+		select * from sys_role_permission where ROLE_ID =
 		#{roleId}
 	</select>
 

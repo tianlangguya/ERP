@@ -43,6 +43,7 @@ public class BeanManager implements ApplicationContextAware {
 
 	@Override
 	public void setApplicationContext(ApplicationContext content) throws BeansException {
+    System.out.println("初始化了");
 		APPLICATION_CONTEXT = content;
 	}
 

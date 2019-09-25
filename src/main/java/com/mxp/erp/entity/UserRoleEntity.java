@@ -12,6 +12,10 @@ public class UserRoleEntity extends BaseEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public static final String USER_ID="USER_ID";
+
+	public static final String ROLE_ID="ROLE_ID";
+
 	@TableField("USER_ID")
 	private String userId;
 

@@ -7,6 +7,8 @@ import com.mxp.erp.base.BaseEntity;
 @TableName("sys_permission")
 public class PermissionEntity extends BaseEntity {
 
+	public static final String PERMISSION_NAME="PERMISSION_NAME";
+
 	private static final long serialVersionUID = 1L;
 
 	@TableField("PERMISSION_NAME")

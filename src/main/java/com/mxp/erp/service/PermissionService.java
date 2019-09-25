@@ -47,7 +47,7 @@ public class PermissionService extends BaseService<PermissionEntity> implements 
 			}
 
 		}
-		return null;
+		return permissionEntities;
 	}
 
 }
